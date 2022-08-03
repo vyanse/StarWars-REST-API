@@ -39,6 +39,39 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+@app.route('/people',methods=['GET'])
+def get_people():
+    # consultar todos los personajes
+    # devolver personas serializadas 
+    return 'personas consultadas', 200
+
+@app.route('/people/<int:people_id>', methods=['GET'])
+def get_person(people_id):
+    person = 'el query que hicimos de las personas'
+    # consultar un id especifico y guardar esa informacion en la variable person
+    # mostrar la informacion del id y si no existe, mostrar un error (no se encuentra registrado)
+    if person != None:
+
+        return 'info de personas consultadas', 200
+    else:
+        return 'no se encontro registrado', 404
+
+@app.route('/planets', methods=['GET'])
+def get_planet():
+    # consultar todos los planetas en DB
+    # devolver planetas serializados
+    return "Planetas consultados", 200
+
+@app.route('/planets/<int:planet_id>', methods=['GET'])
+def get_planetid(planet_id):
+    
+    # consultar todos los planeta individual en DB
+    #si no se encuentra devolver alerta de que no se encuentra ese registro
+    # devolver planeta serializado
+    return "informacion de Planeta consultado", 404
+
+
+
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
